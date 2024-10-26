@@ -28,6 +28,7 @@ def generate_outputs(model, tokenizer, data, max_length=2048):
             )
 
         output_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+        output_text = output_text.split("ASSISTANT：")[-1].strip()
         generated_data.append({
             "id": item["id"],
             "output": output_text
@@ -90,12 +91,14 @@ if __name__ == "__main__":
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    model = PeftModel.from_pretrained(model, args.peft_path)
+    if args.peft_path != "none":
+        model = PeftModel.from_pretrained(model, args.peft_path)
 
     with open(args.test_data_path, "r") as f:
         data = json.load(f)
 
     model.eval()
+    model.to('cuda')
     generated_data = generate_outputs(model, tokenizer, data)
 
     with open(args.output_file_path, "w") as f:

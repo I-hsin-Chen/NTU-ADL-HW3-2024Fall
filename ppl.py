@@ -116,7 +116,8 @@ if __name__ == "__main__":
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
     # Load LoRA
-    model = PeftModel.from_pretrained(model, args.peft_path)
+    if args.peft_path != "none":
+        model = PeftModel.from_pretrained(model, args.peft_path)
 
     with open(args.test_data_path, "r") as f:
         data = json.load(f)
