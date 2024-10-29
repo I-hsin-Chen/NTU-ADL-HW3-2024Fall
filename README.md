@@ -2,6 +2,17 @@
 2024 NTU ADL HW3
 QLoRa finetuning on `zake7749/gemma-2-2b-it-chinese-kyara-dpo`
 
+## Environment Setup
+* Install torch depending on the CUDA version
+```
+pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu118
+```
+* Install packages with allowed versions according to spec.
+```
+pip install transformers==4.45.1 bitsandbytes==0.44.1 peft==0.13.0
+```
+* There are some other required packages such as `sentencepiece` and `matplotlib`, you can simply `pip install` it.
+
 ## Training
 ```
 bash train.sh
