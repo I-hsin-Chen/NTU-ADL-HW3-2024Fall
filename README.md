@@ -1,17 +1,14 @@
-# ADL HW3
-2024 NTU ADL HW3
-QLoRa finetuning on `zake7749/gemma-2-2b-it-chinese-kyara-dpo`
+# 2024 NTU ADL HW3
+This repository contains coursework from National Taiwan University CSIE5431: Applied Deep Learning.
+
+* Task: QLoRa fine-tuning on `zake7749/gemma-2-2b-it-chinese-kyara-dpo`
+* Student: I-Hsin Chen
+* Affiliation: Graduate Institute of Networking and Multimedia, National Taiwan University
 
 ## Environment Setup
-* Install torch depending on the CUDA version
-```
-pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu118
-```
-* Install packages with allowed versions according to spec.
-```
-pip install transformers==4.45.1 bitsandbytes==0.44.1 peft==0.13.0
-```
-* There are some other required packages such as `sentencepiece` and `matplotlib`, you can simply `pip install` it.
+* Install torch depending on your CUDA version: `pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu118`
+* Install packages with allowed versions according to spec: `pip install transformers==4.45.1 bitsandbytes==0.44.1 peft==0.13.0`
+* Install some other required packages such as `sentencepiece` and `matplotlib`.
 
 ## Training
 ```
@@ -23,8 +20,8 @@ bash train.sh
 ```
 bash eval_all.sh
 ```
-* This command will evaluate all the checkpoints in `--peft_path` folder and plot the learning curve.
-* Ths learning curve image would be located at  `--peft_path` and named `ppl_curve.png`.
+* This command will evaluate all checkpoints in the folder specified by --peft_path and plot the learning curve.
+* The generated image (ppl_curve.png) will be saved in the same folder.
 
 ## Inference
 ```
